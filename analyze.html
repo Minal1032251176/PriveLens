@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Analyze Policy - PrivyLens</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body>
+
+    <!-- ============================= -->
+    <!-- NAVIGATION -->
+    <!-- ============================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            <span class="logo-icon">🔐</span>
+            <span>PrivyLens</span>
+        </div>
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="index.html#how-it-works">
+                How It Works
+            </a>
+
+            <a href="index.html#privacy">
+                Our Privacy
+            </a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- ============================= -->
+    <!-- MAIN -->
+    <!-- ============================= -->
+
+    <main>
+
+        <section class="analyze-page">
+
+
+            <!-- ============================= -->
+            <!-- PAGE HEADING -->
+            <!-- ============================= -->
+
+            <div class="section-heading">
+
+                <span class="section-tag">
+                    PRIVACY ANALYSIS
+                </span>
+
+                <h1>
+                    Analyze a
+                    <span>Privacy Policy</span>
+                </h1>
+
+                <p>
+                    Upload a policy document or paste its contents below.
+                    Your analysis is designed to happen locally whenever
+                    possible.
+                </p>
+
+            </div>
+
+
+
+            <!-- ============================= -->
+            <!-- PRIVACY NOTICE -->
+            <!-- ============================= -->
+
+            <div class="local-notice">
+
+                <div class="notice-icon">
+                    🔒
+                </div>
+
+                <div>
+
+                    <h3>
+                        Local-first processing
+                    </h3>
+
+                    <p>
+                        Your policy text is processed in your browser
+                        whenever technically possible. PrivyLens does not
+                        create a policy history or user account.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ============================= -->
+            <!-- ANALYZER INPUT -->
+            <!-- ============================= -->
+
+            <div class="analyzer-container">
+
+                <div class="upload-section">
+
+                    <h2>
+                        Upload your document
+                    </h2>
+
+                    <p>
+                        Supported format:
+                        <strong>PDF</strong>
+                    </p>
+
+                    <label
+                        for="policyFile"
+                        class="upload-box"
+                    >
+
+                        <div class="upload-icon">
+                            📄
+                        </div>
+
+                        <h3>
+                            Choose a Privacy Policy PDF
+                        </h3>
+
+                        <p>
+                            Click here to select your file
+                        </p>
+
+                        <input
+                            type="file"
+                            id="policyFile"
+                            accept=".pdf,application/pdf"
+                        >
+
+                    </label>
+
+                    <div
+                        id="fileName"
+                        class="file-name"
+                    ></div>
+
+                </div>
+
+
+
+                <div class="divider">
+                    <span>OR</span>
+                </div>
+
+
+
+                <div class="text-section">
+
+                    <h2>
+                        Paste the policy
+                    </h2>
+
+                    <textarea
+                        id="policyText"
+                        placeholder="Paste the Privacy Policy or Terms of Service here..."
+                    ></textarea>
+
+                    <div class="text-actions">
+
+                        <span id="characterCount">
+                            0 characters
+                        </span>
+
+                        <button
+                            type="button"
+                            id="clearButton"
+                            class="clear-button"
+                        >
+                            Clear
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <button
+                    id="analyzeButton"
+                    class="primary-button analyze-button"
+                    type="button"
+                >
+                    🔍 Analyze Policy
+                </button>
+
+
+
+                <div
+                    id="statusMessage"
+                    class="status-message"
+                ></div>
+
+            </div>
+
+
+
+            <!-- ============================= -->
+            <!-- REPORT -->
+            <!-- ============================= -->
+
+            <section
+                id="reportSection"
+                class="report-section"
+                style="display: none;"
+            >
+
+                <div class="report-header">
+
+                    <span class="section-tag">
+                        PRIVACY REPORT
+                    </span>
+
+                    <h2>
+                        Your Privacy Analysis
+                    </h2>
+
+                    <p>
+                        This analysis is based only on the policy text
+                        you provided. It is an informational assessment
+                        and not a legal judgment.
+                    </p>
+
+                </div>
+
+
+
+                <!-- ============================= -->
+                <!-- EXECUTIVE SUMMARY -->
+                <!-- ============================= -->
+
+                <div class="summary-card">
+
+                    <div class="summary-icon">
+                        🧠
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            What does this mean?
+                        </h3>
+
+                        <p id="executiveSummary">
+                            Your privacy summary will appear here.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ============================= -->
+                <!-- RISK SCORE -->
+                <!-- ============================= -->
+
+                <div class="risk-card">
+
+                    <div class="risk-title">
+                        Privacy Risk
+                    </div>
+
+                    <div
+                        id="riskScore"
+                        class="risk-score"
+                    >
+                        0
+                    </div>
+
+                    <div class="risk-out-of">
+                        / 100
+                    </div>
+
+                    <div
+                        id="riskLevel"
+                        class="risk-level"
+                    >
+                        LOWER RISK
+                    </div>
+
+                </div>
+
+
+
+                <!-- ============================= -->
+                <!-- RISK OVERVIEW -->
+                <!-- ============================= -->
+
+                <div class="report-grid">
+
+
+                    <div class="report-card">
+
+                        <div class="report-card-icon">
+                            👤
+                        </div>
+
+                        <h3>
+                            Data Collection
+                        </h3>
+
+                        <strong id="collectionStatus">
+                            Not clearly detected
+                        </strong>
+
+                        <p>
+                            Personal and related data
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="report-card">
+
+                        <div class="report-card-icon">
+                            🤝
+                        </div>
+
+                        <h3>
+                            Third-party Sharing
+                        </h3>
+
+                        <strong id="sharingStatus">
+                            Not clearly detected
+                        </strong>
+
+                        <p>
+                            Sharing or disclosure
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="report-card">
+
+                        <div class="report-card-icon">
+                            👁️
+                        </div>
+
+                        <h3>
+                            Tracking
+                        </h3>
+
+                        <strong id="trackingStatus">
+                            Not clearly detected
+                        </strong>
+
+                        <p>
+                            Cookies and tracking
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="report-card">
+
+                        <div class="report-card-icon">
+                            ⚙️
+                        </div>
+
+                        <h3>
+                            User Control
+                        </h3>
+
+                        <strong id="controlStatus">
+                            Not clearly detected
+                        </strong>
+
+                        <p>
+                            Privacy rights and controls
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ============================= -->
+                <!-- DATA FLOW -->
+                <!-- ============================= -->
+
+                <div class="report-block">
+
+                    <h2>
+                        What Happens to Your Data?
+                    </h2>
+
+
+                    <div class="data-flow-grid">
+
+
+                        <div class="data-flow-card">
+
+                            <span>
+                                📥
+                            </span>
+
+                            <h3>
+                                Information collected
+                            </h3>
+
+                            <p id="dataCollected">
+                                Not clearly detected
+                            </p>
+
+                        </div>
+
+
+
+                        <div class="data-flow-card">
+
+                            <span>
+                                🤝
+                            </span>
+
+                            <h3>
+                                Information shared
+                            </h3>
+
+                            <p id="dataShared">
+                                Not clearly detected
+                            </p>
+
+                        </div>
+
+
+
+                        <div class="data-flow-card">
+
+                            <span>
+                                📢
+                            </span>
+
+                            <h3>
+                                Advertising / marketing
+                            </h3>
+
+                            <p id="advertisingStatus">
+                                Not clearly detected
+                            </p>
+
+                        </div>
+
+
+
+                        <div class="data-flow-card">
+
+                            <span>
+                                🗄️
+                            </span>
+
+                            <h3>
+                                Data retention
+                            </h3>
+
+                            <p id="retentionStatus">
+                                Not clearly detected
+                            </p>
+
+                        </div>
+
+
+
+                        <div class="data-flow-card">
+
+                            <span>
+                                🛠️
+                            </span>
+
+                            <h3>
+                                Your privacy controls
+                            </h3>
+
+                            <p id="privacyControls">
+                                Not clearly detected
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ============================= -->
+                <!-- INFORMATION CATEGORIES -->
+                <!-- ============================= -->
+
+                <div class="report-block">
+
+                    <h2>
+                        What Information Does It Mention?
+                    </h2>
+
+                    <div
+                        id="informationCategories"
+                        class="information-list"
+                    ></div>
+
+                </div>
+
+
+
+                <!-- ============================= -->
+                <!-- IMPORTANT FINDINGS -->
+                <!-- ============================= -->
+
+                <div class="report-block">
+
+                    <h2>
+                        Important Privacy Findings
+                    </h2>
+
+                    <div
+                        id="importantFindings"
+                        class="findings-list"
+                    ></div>
+
+                </div>
+
+
+
+                <!-- ============================= -->
+                <!-- EVIDENCE -->
+                <!-- ============================= -->
+
+                <div class="report-block">
+
+                    <h2>
+                        🔎 Evidence From the Policy
+                    </h2>
+
+                    <p class="section-description">
+
+                        These excerpts show the parts of the policy
+                        that contributed to the analysis.
+
+                    </p>
+
+                    <div
+                        id="evidenceList"
+                        class="evidence-list"
+                    ></div>
+
+                </div>
+
+
+
+                <!-- ============================= -->
+                <!-- LIMITATION -->
+                <!-- ============================= -->
+
+                <div class="limitation-card">
+
+                    <h3>
+                        ⚠️ Analysis limitation
+                    </h3>
+
+                    <p>
+
+                        PrivyLens currently uses local rule-based
+                        context analysis. Results are based on patterns
+                        detected in the provided policy and may not fully
+                        understand complex legal language, exceptions,
+                        or relationships between clauses.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- ============================= -->
+                <!-- ANALYZE ANOTHER -->
+                <!-- ============================= -->
+
+                <button
+                    id="analyzeAnotherButton"
+                    class="primary-button"
+                    type="button"
+                >
+                    🔄 Analyze Another Policy
+                </button>
+
+
+            </section>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- ============================= -->
+    <!-- FOOTER -->
+    <!-- ============================= -->
+
+    <footer>
+
+        <div class="logo">
+
+            <span class="logo-icon">
+                🔐
+            </span>
+
+            PrivyLens
+
+        </div>
+
+        <p>
+            Your privacy policy should not become our database.
+        </p>
+
+    </footer>
+
+
+
+    <script
+        type="module"
+        src="js/app.js"
+    ></script>
+
+</body>
+
+</html>
